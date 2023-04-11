@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClient, HttpClientModule } from '@angular/common/http'; //Permitir usar recursos de internet
 
 
-
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
@@ -14,6 +13,7 @@ import { LogosComponent } from './logos/logos.component';
 // Soporte de idiomas
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
 // 
 
 @NgModule({
@@ -32,14 +32,10 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
-        useFactory: (http: HttpClient) => {
-          return new TranslateHttpLoader(http);
-        },
+        useFactory: (http: HttpClient) => new TranslateHttpLoader(http, './assets/i18n/', '.json'),
         deps: [HttpClient]
       }
     })
-    //Fin soporte para varios idiomas
-
   ],
   providers: [],
   bootstrap: [AppComponent]

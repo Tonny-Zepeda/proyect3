@@ -5,6 +5,8 @@ import { LoginParamsInterface } from 'src/app/interfaces/login-params.interface'
 import { LoginResponseInterface } from 'src/app/interfaces/login-response';
 import { LoginService } from 'src/app/services/login.service';
 
+
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -25,10 +27,10 @@ export class LoginComponent implements OnInit {
   constructor(
     private _loginServices: LoginService,
     private _router: Router,
-    private _translate: TranslateService
+    private translate: TranslateService
   ) {
     // this.postLogin();
-    this._translate.setDefaultLang(this.activeLang);
+    this.translate.setDefaultLang(this.activeLang);
   }
 
   ngOnInit(): void {
