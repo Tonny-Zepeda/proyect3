@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginParamsInterface } from 'src/app/interfaces/login-params.interface';
 import { LoginResponseInterface } from 'src/app/interfaces/login-response';
@@ -12,19 +12,34 @@ import { LoginService } from 'src/app/services/login.service';
     LoginService
   ]
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
+  saveMyData = false;
+  usuario: string = "";
+  clave: string = "";
+
 
   //inicializar variables
   constructor(private _loginServices: LoginService, private _router: Router) {
-    this.postLogin();
+    // this.postLogin();
+  }
+
+  ngOnInit(): void {
+    if (localStorage.getItem("token")) {
+      this._router.navigate(['/home'])
+
+    }
+  }
+  //Permannsia de la sesion
+  rememberMe() {
+    this.saveMyData ? this.saveMyData = false : this.saveMyData = true;
   }
 
   async postLogin() {
     //Credenciales
     let credenciales: LoginParamsInterface = {
       option: 1,
-      user: 'mesero',
-      pass: '123'
+      user: this.usuario,
+      pass: this.clave
     }
     //Consumo de la promesa
     let res = await this._loginServices.postLogin(credenciales);
@@ -45,6 +60,17 @@ export class LoginComponent {
     }
     //Si es correcto navegar al home
     this._router.navigate(['/home'])
+    //Guardar el token del ususario
+    if (this.saveMyData) {
+      //Sesion sea permanente
+      localStorage.setItem("token", resLoginJson.message)
+    } else {
+      //Sesion no permanente
+      sessionStorage.setItem("token", resLoginJson.message)
+
+
+    }
+
   }
 
 }
