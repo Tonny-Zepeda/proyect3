@@ -1,0 +1,11 @@
+{
+    "loginComponent": {
+        "correo": "User",
+        "clave": "Password",
+        "recordar": "Remember me",
+        "inicio": "Login"
+    },
+    "homeComponent": {
+        "cerrar": "Logout"
+    }
+}

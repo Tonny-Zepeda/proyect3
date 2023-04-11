@@ -1,0 +1,11 @@
+{
+    "loginComponent": {
+        "correo": "Usuario",
+        "clave": "Contraseña",
+        "recordar": "Recordar mis datos",
+        "inicio": "Iniciar sesión"
+    },
+    "homeComponent": {
+        "cerrar": "Cerrar sesión"
+    }
+}

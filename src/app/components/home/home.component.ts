@@ -19,6 +19,7 @@ export class HomeComponent {
   logout() {
     //Limpiar storage del navegador
     localStorage.clear();
+    sessionStorage.clear();
     this._router.navigate(["/login"]); //Cerramos sesion (Navegamos al login)
   }
 

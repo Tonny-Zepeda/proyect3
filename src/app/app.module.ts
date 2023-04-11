@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http'; //Permitir usar recursos de internet
+import { HttpClient, HttpClientModule } from '@angular/common/http'; //Permitir usar recursos de internet
 
 
 
@@ -9,7 +9,12 @@ import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { routing } from './app.routing';
 import { FormsModule } from '@angular/forms';
-import { LogosComponent } from './componets/logos/logos.component';
+import { LogosComponent } from './logos/logos.component';
+
+// Soporte de idiomas
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+// 
 
 @NgModule({
   declarations: [
@@ -22,7 +27,19 @@ import { LogosComponent } from './componets/logos/logos.component';
     BrowserModule,
     FormsModule, //Forms Module
     routing, //rutas
-    HttpClientModule
+    HttpClientModule,
+    //Soporte para varios idiomas
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (http: HttpClient) => {
+          return new TranslateHttpLoader(http);
+        },
+        deps: [HttpClient]
+      }
+    })
+    //Fin soporte para varios idiomas
+
   ],
   providers: [],
   bootstrap: [AppComponent]

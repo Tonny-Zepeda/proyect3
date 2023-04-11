@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { LoginParamsInterface } from 'src/app/interfaces/login-params.interface';
 import { LoginResponseInterface } from 'src/app/interfaces/login-response';
 import { LoginService } from 'src/app/services/login.service';
@@ -16,11 +17,18 @@ export class LoginComponent implements OnInit {
   saveMyData = false;
   usuario: string = "";
   clave: string = "";
+  // Lenguaje por defecto
+  public activeLang = 'es'; //Español
 
 
   //inicializar variables
-  constructor(private _loginServices: LoginService, private _router: Router) {
+  constructor(
+    private _loginServices: LoginService,
+    private _router: Router,
+    private _translate: TranslateService
+  ) {
     // this.postLogin();
+    this._translate.setDefaultLang(this.activeLang);
   }
 
   ngOnInit(): void {
