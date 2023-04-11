@@ -14,8 +14,6 @@ import { LogosComponent } from './logos/logos.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
-// 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +30,9 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
-        useFactory: (http: HttpClient) => new TranslateHttpLoader(http, './assets/i18n/', '.json'),
+        useFactory: (http: HttpClient) => {
+          return new TranslateHttpLoader(http);
+        },
         deps: [HttpClient]
       }
     })
