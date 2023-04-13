@@ -22,16 +22,17 @@ export class LoginComponent implements OnInit {
   clave: string = "";
   // Lenguaje por defecto
   public activeLang = 'es'; //Español
+  textoIdio = "Español";
 
 
   //inicializar variables
   constructor(
     private _loginServices: LoginService,
     private _router: Router,
-    private translate: TranslateService
+    private _translate: TranslateService
   ) {
     // this.postLogin();
-    this.translate.setDefaultLang(this.activeLang);
+    this._translate.setDefaultLang(this.activeLang);
   }
 
   ngOnInit(): void {
@@ -39,6 +40,23 @@ export class LoginComponent implements OnInit {
       this._router.navigate(['/home'])
 
     }
+  }
+
+  public cambiarLenguaje() {
+
+    // Condicion para cambiar el lenguaje
+    if (this.activeLang == 'es') {
+      this.activeLang = 'en';
+      this._translate.use('en');
+      this.textoIdio = 'Ingles'
+    } {
+      this.activeLang = 'es';
+      this._translate.use('es');
+      this.textoIdio = 'Español'
+
+    }
+
+
   }
   //Permannsia de la sesion
   rememberMe() {

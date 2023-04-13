@@ -9,10 +9,15 @@ import { HomeComponent } from './components/home/home.component';
 import { routing } from './app.routing';
 import { FormsModule } from '@angular/forms';
 import { LogosComponent } from './logos/logos.component';
+// Angular material
+import { MatMenuModule } from '@angular/material/menu';
+import { MatButtonModule } from '@angular/material/button';
+// Fin de angular material
 
 // Soporte de idiomas
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -22,6 +27,10 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
     LogosComponent
   ],
   imports: [
+    // Angular material
+    MatMenuModule,
+    MatButtonModule,
+    // Fin angular material
     BrowserModule,
     FormsModule, //Forms Module
     routing, //rutas
@@ -35,7 +44,8 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
         },
         deps: [HttpClient]
       }
-    })
+    }),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

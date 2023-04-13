@@ -1,5 +1,9 @@
-import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
+import { LoginComponent } from '../login/login.component';
+import { Component } from '@angular/core';
+
+LoginComponent
 
 @Component({
   selector: 'app-home',
@@ -7,12 +11,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
+
   /**
    *
    */
   //Inicializar instancia router
-  constructor(private _router: Router) {
+  constructor(
+    private _router: Router,
 
+  ) {
   }
 
   //Cerrar sesion

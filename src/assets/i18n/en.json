@@ -2,7 +2,7 @@
     "loginComponent": {
         "correo": "User",
         "clave": "Password",
-        "recordar": "Remember me",
+        "recordar": "Remember my data",
         "inicio": "Login"
     },
     "homeComponent": {
